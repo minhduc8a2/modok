@@ -1,0 +1,112 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  /* size  */
+  --CUBE-SIZE: 80px;
+  --OBJ-SIZE: 60px;
+  --BG-HEIGHT: 50px;
+  --CANVAS-HEIGHT: 400px;
+
+  /*colors*/
+  --ROOT-BGCOLOR: #ffffff;
+  --CUBE-BGCOLOR: rgba(255, 0, 0, 0);
+
+  --BG-BGCOLOR: #202020;
+  --OBJ-BGCOLOR: rgba(128, 0, 128, 0);
+
+  /* position  */
+  --BG-POS: 20%;
+  --BASE-POS: calc(var(--BG-POS) + var(--BG-HEIGHT));
+}
+
+.root {
+  min-height: 100vh;
+  max-width: 100%;
+  background-color: var(--ROOT-BGCOLOR);
+  position: relative;
+  overflow: hidden;
+}
+
+#cube {
+  position: absolute;
+  bottom: var(--BASE-POS);
+  left: 1rem;
+  z-index: 10;
+  width: var(--CUBE-SIZE);
+  height: var(--CUBE-SIZE);
+  background-color: var(--CUBE-BGCOLOR);
+}
+
+#cube img {
+  height: 150%;
+}
+.root h1 {
+  display: none;
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%);
+  font-size: 5rem;
+}
+.object {
+  position: absolute;
+  bottom: var(--BASE-POS);
+  left: 110%;
+  width: 45px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: var(--OBJ-SIZE);
+  background-color: var(--OBJ-BGCOLOR);
+}
+
+.object img {
+  max-height: 150%;
+}
+
+.background {
+  position: absolute;
+  bottom: var(--BG-POS);
+  left: 0;
+  background-color: var(--BG-BGCOLOR);
+  height: var(--BG-HEIGHT);
+  width: 100%;
+}
+.jump {
+  animation: jump;
+  animation-duration: 0.8s;
+  animation-timing-function: ease-in-out;
+}
+
+.run {
+  animation: runRightToLeft;
+  animation-duration: 3s;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+@keyframes jump {
+  0% {
+    bottom: var(--BASE-POS);
+  }
+
+  40% {
+    bottom: 60%;
+  }
+  100% {
+    bottom: var(--BASE-POS);
+  }
+}
+
+@keyframes runRightToLeft {
+  0% {
+    left: 110%;
+  }
+
+  100% {
+    left: -10%;
+  }
+}
